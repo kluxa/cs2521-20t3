@@ -34,9 +34,31 @@ isPalindrome(S):
 	Input  array S[0..n - 1] of characters
 	Output true if S is a palindrome, false otherwise
 
+	l = 0                 > 1
+	r = n - 1             > 1
+	while l < r           > n/2
+		if S[l] != S[r]   > n/2
+			return false  > 1 or 0
+		end if
 
+		l = l + 1         > n/2
+		r = r - 1         > n/2
+	end while
+
+	return true           > 1
+
+Time complexity: O(n)
 */
 
 bool isPalindrome(char *S) {
-	return false;
+	int l = 0;
+	int r = strlen(S) - 1;
+	while (l < r) {
+		if (S[l] != S[r]) {
+			return false;
+		}
+		l++;
+		r--;
+	}
+	return true;
 }

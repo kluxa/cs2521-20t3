@@ -46,7 +46,12 @@ int listSumIterative(List L) {
 
 int listSumRecursive(List L) {
     // TODO
-    return 0;
+    // Empty list
+    if (L == NULL) {
+        return 0;
+    } else {
+        return L->data + listSumRecursive(L->next);
+    }
 }
 
 ////////////////////////////////////////////////////////////
@@ -62,7 +67,11 @@ int listLengthIterative(List L) {
 
 int listLengthRecursive(List L) {
     // TODO
-    return 0;
+    if (L == NULL) {
+        return 0;
+    } else {
+        return 1 + listLengthRecursive(L->next);
+    }
 }
 
 ////////////////////////////////////////////////////////////
@@ -80,7 +89,17 @@ int listCountOddsIterative(List L) {
 
 int listCountOddsRecursive(List L) {
     // TODO
-    return 0;
+    if (L == NULL) {
+        return 0;
+    
+    // value is even
+    } else if (L->data % 2 == 0) {
+        return listCountOddsRecursive(L->next);
+    
+    // value is odd
+    } else {
+        return 1 + listCountOddsRecursive(L->next);
+    }
 }
 
 ////////////////////////////////////////////////////////////
@@ -101,7 +120,17 @@ bool listIsSortedIterative(List L) {
 
 bool listIsSortedRecursive(List L) {
     // TODO
-    return false;
+    // list is empty or has one item
+    if (L == NULL || L->next == NULL) {
+        return true;
+    
+    // first two numbers out of order
+    } else if (L->data > L->next->data) {
+        return false;
+    
+    } else {
+        return listIsSortedRecursive(L->next);
+    }
 }
 
 ////////////////////////////////////////////////////////////
